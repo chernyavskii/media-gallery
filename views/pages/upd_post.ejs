@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Изменение записи</title>
+    <% include ../partials/scripts %>
+    <% include ../partials/head %>
+
+    <style type="text/css">
+        body {
+            background-color: #FFFFFF;
+        }
+        .ui.menu .item img.logo {
+            margin-right: 1.5em;
+        }
+        .main.container {
+            margin-top: 7em;
+        }
+        .wireframe {
+            margin-top: 2em;
+        }
+        .ui.footer.segment {
+            margin: 5em 0em 0em;
+            padding: 5em 0em;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item" href="/posts/">Главная</a>
+    <a class="item" href="/users/profile">Мой профиль</a>
+    <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+    <a class="item" href="/posts/userimages">Мои картинки</a>
+    <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+    <a class="item" href="/auth/logout">Выйти</a>
+</div>
+
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a class="toc item">
+            <i class="sidebar icon"></i>
+        </a>
+        <a href="/posts/" class="header item">
+            Главная
+        </a>
+        <a class="item" href="/posts/audio">Музыка</a>
+        <a class="item" href="/posts/images">Картинки</a>
+        <a class="item" href="/posts/video">Видеозаписи</a>
+
+        <div class="ui simple dropdown item">
+            Мои ресурсы <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/users/profile">Мой профиль</a>
+                <div class="divider"></div>
+                <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+                <a class="item" href="/posts/userimages">Мои картинки</a>
+                <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui main text container">
+    <h1 class="ui header">Изменение публикации</h1>
+
+    <div class="ui text container">
+
+        <div id="update-post">
+            <table class="ui celled table">
+                <thead>
+                <th>
+                    <% if (posts.type == 'image') { %>
+                        <img class="ui medium centered image" src="<%= image_url(posts.image_id,{width: 0.5, crop: "scale"})%>">
+                    <% } %>
+                    <% if (posts.type == 'audio') { %>
+                    <div class="audio">
+                        <center>
+                            <div class="audio" >
+                                <audio controls style="width: 671px;margin-top:5px;">
+                                    <source src="<%= posts.image %>"/>
+                                </audio>
+                            </div>
+                        </center>
+                    </div>
+                    <% } %>
+                    <% if (posts.type == 'video') { %>
+                    <div>
+                        <center>
+                            <video controls width="300" height="200px" style="border: 1px solid lightgray;">
+                                <source src="<%= posts.image %>" style="max-height: 300px" type="video/mp4" >
+                            </video>
+                        </center>
+                    </div>
+                    <% } %>
+                </th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="ui two column centered grid">
+                            <div class="column" >
+                                <form action="/posts/correct/<%=posts.id%>" method="post" class="ui form" id="update-form">
+                                    <div class="field">
+                                        <label>Заголовок</label>
+                                        <input value="<%=posts.title%>" name="title" type="text" placeholder="Заголовок" />
+                                    </div>
+                                    <div class="field">
+                                        <label>Описание</label>
+                                        <input value="<%=posts.description%>" name="description" type="text" placeholder="Заголовок" />
+                                    </div>
+                                    <button class="ui primary button" type="submit" id="upd-post">обновить</button>
+                                    <div class="ui error message"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

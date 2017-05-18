@@ -1,0 +1,1212 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "media-api",
+    "description": "Media-api documentation",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "produces": [
+    "application/json",
+    "text/json"
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "description": "Добавление нового пользователя",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "Атрибуты пользователя",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "tags": [
+          "User Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetRegisterResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "description": "Авторизация",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "Атрибуты пользователя",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "tags": [
+          "User Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetLoginResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/create": {
+      "x-swagger-router-controller": "posts",
+      "post": {
+        "description": "Добавить новую публикацию",
+        "parameters": [
+          {
+            "name": "title",
+            "description": "Атрибуты публикации",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          }
+        ],
+        "tags": [
+          "Operation with Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetCreatePostResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/post/{id}": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Получить публикацию по id",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id публикации",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Operation with Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostByIdResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех публикаций",
+        "tags": [
+          "Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/destroy/{id}": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Удаление публикации",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id публикации",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Operation with Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralSuccessResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/audio": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех аудиозаписей",
+        "tags": [
+          "Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/video": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех видеозаписей",
+        "tags": [
+          "Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/images": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех изображений",
+        "tags": [
+          "Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/like/{id}": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Оценить публикацию по id",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id публикации",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Operation with Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Like"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/userimages": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех изображений пользователя",
+        "tags": [
+          "User Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsUserListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/useraudio": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех аудиозаписей пользователя",
+        "tags": [
+          "User Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsUserListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/uservideo": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Список всех видеозаписей пользователя",
+        "tags": [
+          "User Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsUserListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/correct/{id}": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Обновить публикацию по id",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id публикации",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Operation with Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralSuccessResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/search": {
+      "x-swagger-router-controller": "posts",
+      "post": {
+        "description": "Поиск публикаций по ключевому слову",
+        "parameters": [
+          {
+            "name": "body",
+            "description": "Атрибуты пользователя",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Word"
+            }
+          }
+        ],
+        "tags": [
+          "Operation with Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetPostsListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/profile": {
+      "x-swagger-router-controller": "posts",
+      "get": {
+        "description": "Профиль текущего авторизованного пользователя",
+        "tags": [
+          "Operation with Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetProfileResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/user/{id}": {
+      "x-swagger-router-controller": "users",
+      "get": {
+        "description": "Получить пользователя по id",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id пользователя",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Operation with Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetRegisterResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/admin": {
+      "x-swagger-router-controller": "users",
+      "get": {
+        "description": "Список всех пользователей",
+        "tags": [
+          "Admin Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetUsersListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/destroy/{id}": {
+      "x-swagger-router-controller": "users",
+      "get": {
+        "description": "Удалить пользователя по id",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id пользователя",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Admin Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralSuccessResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/users/block/{id}": {
+      "x-swagger-router-controller": "users",
+      "get": {
+        "description": "Блокировка пользователя по id",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id пользователя",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Admin Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralSuccessResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetPostByIdResponse": {
+      "required": [
+        "id",
+        "description",
+        "title",
+        "image",
+        "type",
+        "image_id",
+        "likes",
+        "createdAt",
+        "updatedAt",
+        "userId",
+        "email",
+        "image_id_user",
+        "image_user"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "id"
+        },
+        "description": {
+          "type": "string",
+          "description": "описание"
+        },
+        "title": {
+          "type": "string",
+          "description": "заголовок"
+        },
+        "image": {
+          "type": "string",
+          "description": "файл"
+        },
+        "type": {
+          "type": "string",
+          "description": "тип публикации"
+        },
+        "image_id": {
+          "type": "string",
+          "description": "id файла"
+        },
+        "likes": {
+          "type": "string",
+          "description": "рейтинг публикации"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "время создания"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "время обновления"
+        },
+        "userId": {
+          "type": "integer",
+          "description": "id пользователя"
+        },
+        "email": {
+          "type": "string",
+          "description": "email адрес"
+        },
+        "image_id_user": {
+          "type": "string",
+          "description": "id аватара пользователя"
+        },
+        "image_user": {
+          "type": "string",
+          "description": "id аватара пользователя"
+        }
+      }
+    },
+    "GetRegisterResponse": {
+      "required": [
+        "id",
+        "email",
+        "status",
+        "password",
+        "firstname",
+        "lastname",
+        "image",
+        "image_id",
+        "updatedAt",
+        "deletedAt",
+        "createdAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "id"
+        },
+        "status": {
+          "type": "integer",
+          "description": "статус блокировки"
+        },
+        "email": {
+          "type": "string",
+          "description": "email адрес"
+        },
+        "password": {
+          "type": "string",
+          "description": "пароль"
+        },
+        "firstname": {
+          "type": "string",
+          "description": "имя"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "фамилия"
+        },
+        "image": {
+          "type": "string",
+          "description": "файл"
+        },
+        "image_id": {
+          "type": "string",
+          "description": "id файла"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "время обновления"
+        },
+        "deletedAt": {
+          "type": "string",
+          "description": "время удаления"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "время создания"
+        }
+      }
+    },
+    "GetProfileResponse": {
+      "required": [
+        "id",
+        "email",
+        "password",
+        "firstname",
+        "lastname",
+        "image",
+        "image_id",
+        "count_posts",
+        "createdAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "id"
+        },
+        "email": {
+          "type": "string",
+          "description": "email адрес"
+        },
+        "password": {
+          "type": "string",
+          "description": "пароль"
+        },
+        "firstname": {
+          "type": "string",
+          "description": "имя"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "фамилия"
+        },
+        "image": {
+          "type": "string",
+          "description": "файл"
+        },
+        "image_id": {
+          "type": "string",
+          "description": "id файла"
+        },
+        "count_posts": {
+          "type": "integer",
+          "description": "время обновления"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "время создания"
+        }
+      }
+    },
+    "GetLoginResponse": {
+      "required": [
+        "id",
+        "roleId"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "id пользователя"
+        },
+        "roleId": {
+          "type": "integer",
+          "description": "id роли"
+        }
+      }
+    },
+    "GetCreatePostResponse": {
+      "required": [
+        "userId",
+        "title",
+        "description",
+        "image",
+        "image_id",
+        "type"
+      ],
+      "properties": {
+        "userId": {
+          "type": "integer",
+          "description": "id пользователя"
+        },
+        "title": {
+          "type": "string",
+          "description": "заголовок"
+        },
+        "description": {
+          "type": "string",
+          "description": "описание"
+        },
+        "image": {
+          "type": "string",
+          "description": "файл"
+        },
+        "image_id": {
+          "type": "string",
+          "description": "id файла"
+        },
+        "type": {
+          "type": "string",
+          "description": "тип публикации"
+        }
+      }
+    },
+    "GetPostsUserListResponse": {
+      "required": [
+        "posts"
+      ],
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "id публикации"
+              },
+              "description": {
+                "type": "string",
+                "description": "описание"
+              },
+              "title": {
+                "type": "string",
+                "description": "заголовок"
+              },
+              "type": {
+                "type": "string",
+                "description": "тип публикации"
+              },
+              "image": {
+                "type": "string",
+                "description": "файл"
+              },
+              "image_id": {
+                "type": "string",
+                "description": "id файла"
+              },
+              "likes": {
+                "type": "string",
+                "description": "рейтинг публикации"
+              },
+              "createdAt": {
+                "type": "string",
+                "description": "время создания"
+              },
+              "updatedAt": {
+                "type": "string",
+                "description": "время обновления"
+              },
+              "deletedAt": {
+                "type": "string",
+                "description": "время удаления"
+              },
+              "userId": {
+                "type": "integer",
+                "description": "id пользователя"
+              }
+            }
+          }
+        }
+      }
+    },
+    "GetPostsListResponse": {
+      "required": [
+        "posts"
+      ],
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "id публикации"
+              },
+              "description": {
+                "type": "string",
+                "description": "описание"
+              },
+              "title": {
+                "type": "string",
+                "description": "заголовок"
+              },
+              "type": {
+                "type": "string",
+                "description": "тип публикации"
+              },
+              "image": {
+                "type": "string",
+                "description": "файл"
+              },
+              "image_id": {
+                "type": "string",
+                "description": "id файла"
+              },
+              "likes": {
+                "type": "string",
+                "description": "рейтинг публикации"
+              },
+              "createdAt": {
+                "type": "string",
+                "description": "время создания"
+              },
+              "updatedAt": {
+                "type": "string",
+                "description": "время обновления"
+              },
+              "deletedAt": {
+                "type": "string",
+                "description": "время удаления"
+              },
+              "userId": {
+                "type": "integer",
+                "description": "id пользователя"
+              },
+              "user": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "id пользователя"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "email адрес"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "пароль"
+                  },
+                  "firstname": {
+                    "type": "string",
+                    "description": "имя"
+                  },
+                  "lastname": {
+                    "type": "string",
+                    "description": "фамилия"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "файл"
+                  },
+                  "image_id": {
+                    "type": "string",
+                    "description": "id файла"
+                  },
+                  "status": {
+                    "type": "integer",
+                    "description": "статус блокировки"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "description": "время создания"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "description": "время обновления"
+                  },
+                  "deletedAt": {
+                    "type": "string",
+                    "description": "время удаления"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "GetUsersListResponse": {
+      "required": [
+        "users"
+      ],
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "id пользователя"
+              },
+              "email": {
+                "type": "string",
+                "description": "email адрес"
+              },
+              "password": {
+                "type": "string",
+                "description": "пароль"
+              },
+              "firstname": {
+                "type": "string",
+                "description": "имя"
+              },
+              "lastname": {
+                "type": "string",
+                "description": "фамилия"
+              },
+              "image": {
+                "type": "string",
+                "description": "файл"
+              },
+              "image_id": {
+                "type": "string",
+                "description": "id файла"
+              },
+              "status": {
+                "type": "integer",
+                "description": "статус блокировки"
+              },
+              "createdAt": {
+                "type": "string",
+                "description": "время создания"
+              },
+              "updatedAt": {
+                "type": "string",
+                "description": "время обновления"
+              },
+              "deletedAt": {
+                "type": "string",
+                "description": "время удаления"
+              }
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "id"
+        },
+        "status": {
+          "type": "integer",
+          "description": "статус блокировки"
+        },
+        "email": {
+          "type": "string",
+          "description": "email адрес"
+        },
+        "password": {
+          "type": "string",
+          "description": "пароль"
+        },
+        "firstname": {
+          "type": "string",
+          "description": "имя"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "фамилия"
+        },
+        "image": {
+          "type": "string",
+          "description": "файл"
+        },
+        "image_id": {
+          "type": "string",
+          "description": "id файла"
+        }
+      },
+      "required": [
+        "email",
+        "password",
+        "firstname",
+        "lastname",
+        "image",
+        "image_id"
+      ]
+    },
+    "Login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "email адрес"
+        },
+        "password": {
+          "type": "string",
+          "description": "пароль"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "Like": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "id записи"
+        },
+        "userId": {
+          "type": "integer",
+          "description": "id пользователя"
+        },
+        "postId": {
+          "type": "integer",
+          "description": "id публикации"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "время обновления"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "время создания"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "postId",
+        "updatedAt",
+        "createdAt"
+      ]
+    },
+    "Word": {
+      "type": "object",
+      "properties": {
+        "word": {
+          "type": "string",
+          "description": "ключевое слово"
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "заголовок"
+        },
+        "description": {
+          "type": "string",
+          "description": "описание"
+        },
+        "type": {
+          "type": "string",
+          "description": "тип"
+        },
+        "image": {
+          "type": "string",
+          "description": "медиа-файл"
+        },
+        "image_id": {
+          "type": "string",
+          "description": "id медиа-файла"
+        },
+        "likes": {
+          "type": "integer",
+          "description": "рейтинг публикации"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "type",
+        "image",
+        "image_id",
+        "likes"
+      ]
+    },
+    "GeneralSuccessResponse": {
+      "type": "object",
+      "properties": {
+        "Success": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Success"
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "format": "int32"
+        },
+        "code": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

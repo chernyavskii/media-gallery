@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Поиск</title>
+    <% include ../partials/scripts %>
+    <% include ../partials/head %>
+    <link href="/public/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            background-color: #FFFFFF;
+        }
+        .ui.menu .item img.logo {
+            margin-right: 1.5em;
+        }
+        .main.container {
+            margin-top: 7em;
+        }
+        .wireframe {
+            margin-top: 2em;
+        }
+        .ui.footer.segment {
+            margin: 5em 0em 0em;
+            padding: 5em 0em;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item" href="/posts/">Главная</a>
+    <a class="item" href="/users/profile">Мой профиль</a>
+    <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+    <a class="item" href="/posts/userimages">Мои картинки</a>
+    <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+    <a class="item" href="/auth/logout">Выйти</a>
+</div>
+
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a class="toc item">
+            <i class="sidebar icon"></i>
+        </a>
+        <a href="/posts/" class="header item">
+            Главная
+        </a>
+        <a class="item" href="/posts/audio">Музыка</a>
+        <a class="item" href="/posts/images">Картинки</a>
+        <a class="item" href="/posts/video">Видеозаписи</a>
+
+        <div class="ui simple dropdown item">
+            Мои ресурсы <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/users/profile">Мой профиль</a>
+                <div class="divider"></div>
+                <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+                <a class="item" href="/posts/userimages">Мои картинки</a>
+                <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui main text container">
+    <h1 class="ui header">Страница поиска</h1>
+    </div>
+
+    <div class="ui horizontal section divider">Результаты поиска</div>
+    <div class="ui text container">
+        <div class="ui segments">
+            <% posts.forEach(function(post, index) { %>
+
+            <div class="ui segment"><h4 class="ui image header">
+                    <div class="content">
+                        <a href="/posts/post/<%= post.id %>" class="header" id="test-header"><%= post.title %></a>
+                        <div class="description">
+                            <%= post.description %>
+                        </div>
+                    </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+
+</body>
+
+</html>

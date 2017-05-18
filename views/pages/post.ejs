@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Публикация</title>
+    <% include ../partials/scripts %>
+    <% include ../partials/head %>
+    <link href="/public/css/style.css" rel="stylesheet">
+
+    <script>
+        $(document).ready(function() {
+            $('#zoom-image').click(function () {
+                $('#zoom-image-block').modal('show');
+            });
+        });
+    </script>
+
+
+    <style type="text/css">
+        body {
+            background-color: #FFFFFF;
+        }
+        .ui.menu .item img.logo {
+            margin-right: 1.5em;
+        }
+        .main.container {
+            margin-top: 7em;
+        }
+        .wireframe {
+            margin-top: 2em;
+        }
+        .ui.footer.segment {
+            margin: 5em 0em 0em;
+            padding: 5em 0em;
+        }
+    </style>
+
+</head>
+<body>
+<div class="ui modal" id="zoom-image-block">
+    <i class="close icon"></i>
+           <center> <img src="<%= post.image %>"></center>
+</div>
+
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item" href="/posts/">Главная</a>
+    <a class="item" href="/users/profile">Мой профиль</a>
+    <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+    <a class="item" href="/posts/userimages">Мои картинки</a>
+    <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+    <a class="item" href="/auth/logout">Выйти</a>
+</div>
+
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a class="toc item">
+            <i class="sidebar icon"></i>
+        </a>
+        <a href="/posts/" class="header item">
+            Главная
+        </a>
+        <a class="item" href="/posts/audio">Музыка</a>
+        <a class="item" href="/posts/images">Картинки</a>
+        <a class="item" href="/posts/video">Видеозаписи</a>
+
+        <div class="ui simple dropdown item">
+            Мои ресурсы <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/users/profile">Мой профиль</a>
+                <div class="divider"></div>
+                <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+                <a class="item" href="/posts/userimages">Мои картинки</a>
+                <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui main text container">
+    <h1 class="ui header">Публикация</h1>
+    <div class="ui stackable four column grid">
+        <div class="column">
+            <div class="ui labeled button" tabindex="0">
+                <form>
+                    <button class="ui labeled button"  formaction="/posts/like/<%= post.id %>">
+                        <div class="ui button">
+                            <i class="heart icon"></i>
+                            Like
+                        </div>
+
+                        <a id="count-likes" class="ui basic label">
+                            <%= post.likes %>
+                        </a>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <% if (post.type == 'image') { %>
+    <a  id="zoom-image">
+        <img class="ui medium centered image" src="<%= image_url(post.image_id,{width: 0.5, crop: "scale"})%>">
+    </a>
+    <% } %>
+    <% if (post.type == 'audio') { %>
+    <div class="audio">
+        <center>
+        <audio controls style="width: 500px;margin-top:20px;">
+            <source src="<%= post.image %>"/>
+        </audio>
+        </center>
+    </div>
+    <% } %>
+    <% if (post.type == 'video') { %>
+    <div>
+        <center>
+        <video controls width="300" height="200px" style="border: 1px solid lightgray;">
+            <source src="<%= post.image %>" style="max-height: 300px" type="video/mp4" >
+        </video>
+        </center>
+    </div>
+    <% } %>
+
+
+
+    <div class="ui horizontal section divider">Информация о публикации</div>
+    <div class="ui container">
+        <table class="ui celled table">
+            <thead>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="user icon"></i>
+                            Заголовок
+                        </div>
+                </td>
+                <td>
+                    <%= post.title %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="send outline icon"></i>
+                            Описание
+                        </div>
+                </td>
+                <td>
+                    <%= post.description %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="pin icon"></i>
+                            Количество лайков
+                        </div>
+                </td>
+                <td>
+                    <%= post.likes%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="pin icon"></i>
+                            Дата публикации
+                        </div>
+                </td>
+                <td>
+                    <%= post.createdAt.toLocaleDateString()%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="pin icon"></i>
+                            Пользователь
+                        </div>
+                </td>
+                <td>
+                    <div class="extra">
+                        <img src="<%= post.image_user%>" class="ui circular avatar image"><a href="/users/user/<%=post.userId%>"><%=post.email%> </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="pin icon"></i>
+                            Поделиться
+                        </div>
+                </td>
+                <td>
+                    <div class="column"><div class="extra content">
+                            <a class="twitter-share-button"
+                               href="https://twitter.com/share"
+                               data-size="large"
+                               data-text="Мне понравилась эта публикация:"
+                               data-url="http://localhost:3000<%=url.val%>"
+                               data-hashtags="course,like"
+                               data-related="twitterapi,twitter">
+                                Tweet
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 1</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 2</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 3</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Footer Header</h4>
+                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+            <a class="item" href="#">Site Map</a>
+            <a class="item" href="#">Contact Us</a>
+            <a class="item" href="#">Terms and Conditions</a>
+            <a class="item" href="#">Privacy Policy</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

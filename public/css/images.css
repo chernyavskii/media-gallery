@@ -1,0 +1,51 @@
+.ui.large.top.fixed.hidden.menu > .ui.container > .right.menu > .ui.buttons
+{
+    margin-top: 100px;
+}
+.hidden.menu {
+    display: none;
+}
+.ui.inverted.vertical.masthead.center.aligned.segment{
+    background: url("../../public/canon_ae_1_fotoapparat_100966_1920x1080.jpg");
+}
+.masthead.segment {
+    min-height: 700px;
+    padding: 1em 0em;
+}
+.masthead .logo.item img {
+    margin-right: 1em;
+}
+.masthead .ui.menu .ui.button {
+    margin-left: 0.5em;
+}
+.masthead h1.ui.header {
+    margin-top: 3em;
+    margin-bottom: 0em;
+    font-size: 4em;
+    font-weight: normal;
+}
+.masthead h2 {
+    font-size: 1.7em;
+    font-weight: normal;
+}
+#image-card{
+    height: 200px;
+}
+#field-new-post{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#field-new-post-descr
+{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+#new-post-button{
+    width: 50%;
+    margin-left:225px;
+}
+#new-post-block{
+    background: url("../../public/olen_minimalizm_vektor_fon_priroda_93845_1440x900.jpg");
+}
+

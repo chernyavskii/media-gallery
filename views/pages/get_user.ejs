@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Профиль пользователя</title>
+    <% include ../partials/scripts %>
+    <% include ../partials/head %>
+
+    <style type="text/css">
+        body {
+            background-color: #FFFFFF;
+        }
+        .ui.menu .item img.logo {
+            margin-right: 1.5em;
+        }
+        .main.container {
+            margin-top: 7em;
+        }
+        .wireframe {
+            margin-top: 2em;
+        }
+        .ui.footer.segment {
+            margin: 5em 0em 0em;
+            padding: 5em 0em;
+        }
+    </style>
+
+</head>
+<body>
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item" href="/posts/">Главная</a>
+    <a class="item" href="/users/profile">Мой профиль</a>
+    <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+    <a class="item" href="/posts/userimages">Мои картинки</a>
+    <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+    <a class="item" href="/auth/logout">Выйти</a>
+</div>
+
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a class="toc item">
+            <i class="sidebar icon"></i>
+        </a>
+        <a href="/posts/" class="header item">
+            Главная
+        </a>
+        <a class="item" href="/posts/audio">Музыка</a>
+        <a class="item" href="/posts/images">Картинки</a>
+        <a class="item" href="/posts/video">Видеозаписи</a>
+
+        <div class="ui simple dropdown item">
+            Мои ресурсы <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/users/profile">Мой профиль</a>
+                <div class="divider"></div>
+                <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+                <a class="item" href="/posts/userimages">Мои картинки</a>
+                <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui main text container">
+    <h1 class="ui header">Профиль пользователя</h1>
+    <img class="ui medium centered image" src="<%= image_url(post.image_id, {width: 200, height: 200, radius: 100, crop: "fill", border: "2px_solid_grey"}) %>">
+
+    <div class="ui horizontal section divider">информация</div>
+    <div class="ui container">
+        <table class="ui celled table">
+            <thead>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="user icon"></i>
+                            Имя Фамилия
+                        </div>
+                </td>
+                <td>
+                    <%= post.firstname %> <%= post.lastname %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="send outline icon"></i>
+                            Логин
+                        </div>
+                </td>
+                <td>
+                    <%= post.email %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="pin icon"></i>
+                            Количество публикаций
+                        </div>
+                </td>
+                <td>
+                    <%= post.count_posts%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="pin icon"></i>
+                            Дата регистрации
+                        </div>
+                </td>
+                <td>
+                    <%= post.createdAt.toLocaleDateString()%>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 1</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 2</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 3</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Footer Header</h4>
+                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+            <a class="item" href="#">Site Map</a>
+            <a class="item" href="#">Contact Us</a>
+            <a class="item" href="#">Terms and Conditions</a>
+            <a class="item" href="#">Privacy Policy</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

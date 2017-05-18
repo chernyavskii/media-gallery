@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/head %>
+    <% include ../partials/scripts %>
+    <link href="/public/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+    <title>Панель Администратора</title>
+
+</head>
+<body>
+<!--форма ошибки -->
+<% if (err.message != '') { %>
+<div class="ui modal" id="error-block">
+    <i class="close icon"></i>
+    <div class="header">
+        Ошибка входа
+    </div>
+    <div class="image content">
+        <div class="description">
+            <%= err.message %>
+        </div>
+    </div>
+    <div class="actions">
+        <form id="exit-button">
+            <button class="positive ui button" >Закрыть</button>
+        </form>
+    </div>
+</div>
+<script>$('#error-block').modal('show');</script>
+<% } %>
+
+<div class="ui main text container">
+    <h1 class="ui header">Панель Администратора</h1>
+
+    <div class="ui horizontal section divider">Список пользователей</div>
+    <div class="ui container">
+        <table class="ui celled table">
+            <thead>
+            <th>Пользователи</th>
+            <th></th>
+
+            </thead>
+            <tbody>
+          <% user.forEach(function(users, index) { %>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <i class="user icon"></i>
+                            <%= users.firstname %> <%= users.lastname %>
+                        </div>
+                </td>
+                <td>
+                    <div class="extra content">
+                        <form action="/users/destroy/<%=users.id%>?" method="get" style="display: inline" id="destroy_form<%= index %>">
+                            <a onclick="document.getElementById('destroy_form<%= index %>').submit(); return false;">
+                                <i class="remove icon"></i> Удалить
+                            </a>
+                        </form>
+                        <form action="/users/block/<%=users.id%>?" method="post" style="display: inline" >
+                            <% if (users.status == 0) {%>
+                                <button class="ui primary button" type="submit" >Заблокировать</button>
+                            <% } %>
+                            <% if (users.status == 1) {%>
+                                <button class="ui primary button" type="submit" >Разблокировать</button>
+                            <% } %>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

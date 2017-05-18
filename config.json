@@ -1,0 +1,27 @@
+{
+  "production":
+  {
+    "host": "ec2-23-23-227-188.compute-1.amazonaws.com",
+    "name": "dfmj6rhaohapap",
+    "user": "lumvyuvpuvguvq",
+    "password": "68328323fc3cc82ea3c5a09c07017e2fd94c3f4bde2611fe995708a87f33318d"
+  },
+  "db":
+  {
+    "host": "127.0.0.1",
+    "name": "media_db",
+    "user": "root",
+    "password": ""
+  },
+  "env": "dev",
+  "cookie": {
+    "key": "secret key",
+    "auth": "__auth_id"
+  },
+  "cloudinary":
+  {
+    "cloud_name" : "dqwyh00ko",
+    "api_key"    : "555347494698456",
+    "api_secret" : "zKPb5I5_Dwb9Pr1BYTCgAnOlw90"
+  }
+}

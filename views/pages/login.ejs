@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+    <% include ../partials/scripts %>
+    <link href="/public/css/login.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+    <title>Логин</title>
+</head>
+<body class="login-body">
+<!--форма ошибки -->
+<!--<% if (err.message != '') { %>
+<div class="ui modal" id="error-block">
+    <i class="close icon"></i>
+    <div class="header">
+        Ошибка входа
+    </div>
+    <div class="image content">
+        <div class="description">
+            <%= err.message %>
+        </div>
+    </div>
+    &lt;!&ndash;<div class="actions">
+        <form id="exit-button">
+            <button class="positive ui button" >Закрыть</button>
+        </form>
+    </div>&ndash;&gt;
+</div>
+<script>$('#error-block').modal('show');</script>
+<% } %>-->
+<div class="ui modal" id="registration-block">
+    <i class="close icon"></i>
+    <form action="/auth/register" method="post" enctype="multipart/form-data" class="ui form" id="registration-form">
+        <p style="font-family: 'Open Sans Condensed', sans-serif" id="reg-block-two-fields">Расскажите нам о себе.</p>
+        <div class="two fields" id="reg-block-two-fields">
+            <div class="field">
+                <label>Имя</label>
+                <input placeholder="Имя" name="firstname" type="text" style="font-family: 'Open Sans Condensed', sans-serif">
+            </div>
+            <div class="field">
+                <label>Фамилия</label>
+                <input placeholder="Фамилия" name="lastname" type="text" style="font-family: 'Open Sans Condensed', sans-serif">
+            </div>
+        </div>
+        <div class="two fields" id="reg-block-two-fields">
+            <div class="field">
+                <label>e-mail</label>
+                <input placeholder="E-mail адрес" name="email" type="text" style="font-family: 'Open Sans Condensed', sans-serif">
+            </div>
+            <div class="field">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="Пароль" style="font-family: 'Open Sans Condensed', sans-serif">
+            </div>
+        </div>
+        <div class="two fields" id="reg-block-two-fields">
+            <div class="field">
+                <label>Загрузить аватар</label>
+                <input name="image" type="file" />
+            </div>
+        </div>
+        <div class="inline field" id="reg-block-two-fields">
+            <div class="ui checkbox">
+                <input type="checkbox" name="terms">
+                <label>Я согласен с условиями пользовательского соглашения</label>
+            </div>
+        </div>
+        <button class="ui primary button" name='ref_path' type="submit" value='<%=ref_path%>' id="reg-button">Зарегистрироваться</button>
+        <div class="ui error message"></div>
+    </form>
+</div>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <div class="content" style="font-style: 'Open Sans Condensed', sans-serif">
+                Вход в аккаунт
+            </div>
+        </h2>
+        <form action="/auth/login/" id="login-form" method="post" enctype="x-www-form-urlencoded" class="ui large form">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="email" placeholder="e-mail адрес" style="font-family: 'Open Sans Condensed', sans-serif">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="пароль" style="font-family: 'Open Sans Condensed', sans-serif">
+                    </div>
+                </div>
+
+                <input type='hidden' name='ref_path' value='<%=ref_path%>'/>
+<!--
+                <button class="ui teal button">Войти</button>
+-->
+            </div>
+            <div class="ui error message"></div>
+        </form>
+        <div class="ui message">
+            новый пользователь? <a id="reg-href">Зарегистрироваться</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

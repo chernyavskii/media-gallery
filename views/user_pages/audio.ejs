@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мои аудиозаписи</title>
+    <% include ../partials/scripts %>
+    <% include ../partials/head %>
+
+    <style type="text/css">
+        body {
+            background-color: #FFFFFF;
+        }
+        .ui.menu .item img.logo {
+            margin-right: 1.5em;
+        }
+        .main.container {
+            margin-top: 7em;
+        }
+        .wireframe {
+            margin-top: 2em;
+        }
+        .ui.footer.segment {
+            margin: 5em 0em 0em;
+            padding: 5em 0em;
+        }
+    </style>
+
+</head>
+<body>
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item" href="/posts/">Главная</a>
+    <a class="item" href="/users/profile">Мой профиль</a>
+    <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+    <a class="item" href="/posts/userimages">Мои картинки</a>
+    <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+    <a class="item" href="/auth/logout">Выйти</a>
+</div>
+
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a class="toc item">
+            <i class="sidebar icon"></i>
+        </a>
+        <a href="/posts/" class="header item">
+            Главная
+        </a>
+        <a class="item" href="/posts/audio">Музыка</a>
+        <a class="item" href="/posts/images">Картинки</a>
+        <a class="item" href="/posts/video">Видеозаписи</a>
+
+        <div class="ui simple dropdown item">
+            Мои ресурсы <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/users/profile">Мой профиль</a>
+                <div class="divider"></div>
+                <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+                <a class="item" href="/posts/userimages">Мои картинки</a>
+                <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui main text container">
+    <h1 class="ui header">Мои аудиозаписи</h1>
+    <div class="ui text container">
+        <% posts.forEach(function(post, index) { %>
+        <table class="ui celled table">
+            <thead>
+            <th>
+                <div class="audio" >
+                    <audio controls style="width: 671px;margin-top:5px;">
+                        <source src="<%= post.image %>"/>
+                    </audio>
+                </div>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <a href="/posts/post/<%= post.id %>" class="header" id="test-header"><%= post.title %></a>
+                            <div class="sub header"><%= post.description %>
+                            </div>
+                        </div>
+                </td>
+                <tr>
+                <td>
+                        <div class="extra content">
+                            <form action="/posts/destroy/<%=post.id%>?" method="get" style="display: inline" id="destroy_form<%= index %>">
+                                <input type="hidden" name="image_id" value="<%= post.image_id %>">
+                                <a onclick="document.getElementById('destroy_form<%= index %>').submit(); return false;">
+                                    <i class="remove icon"></i> Удалить
+                                </a>
+                            </form>
+                                <a href="/posts/correct/<%=post.id%>">
+                                    <i class="edit icon"></i> Изменить
+                                </a>
+                        </div>
+
+                </td>
+
+
+            </tr>
+            </tr>
+
+            </tbody>
+        </table>
+        <% }) %>
+    </div>
+</div>
+
+
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 1</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 2</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Group 3</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Link One</a>
+                    <a href="#" class="item">Link Two</a>
+                    <a href="#" class="item">Link Three</a>
+                    <a href="#" class="item">Link Four</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Footer Header</h4>
+                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+            <a class="item" href="#">Site Map</a>
+            <a class="item" href="#">Contact Us</a>
+            <a class="item" href="#">Terms and Conditions</a>
+            <a class="item" href="#">Privacy Policy</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/head %>
+    <% include ../partials/scripts %>
+    <link href="/public/css/audio.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+    <title>Музыка</title>
+
+    <style type="text/css">
+        #count-likes{
+            margin-left:22px;
+        }
+        .ui.labeled.button > #count-likes{
+            height: 36px;
+        }
+        .ui.button{
+            margin-top:-5px;
+        }
+
+    </style>
+</head>
+<body class="pushable">
+<div class="ui large top fixed menu transition hidden">
+    <div class="ui container">
+        <a class="active item" href="/posts/">Главная</a>
+        <a class="item" href="/posts/audio">Музыка</a>
+        <a class="item" href="/posts/images">Картинки</a>
+        <a class="item" href="/posts/video">Видеозаписи</a>
+        <div class="right menu">
+            <a class="active item" href="/auth/logout">Выйти</a>
+        </div>
+    </div>
+</div>
+<div class="ui vertical inverted sidebar menu">
+    <a class="active item" href="/posts/">Главная</a>
+    <a class="item" href="/users/profile">Мой профиль</a>
+    <a class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+    <a class="item" href="/posts/userimages">Мои картинки</a>
+    <a class="item" href="/posts/uservideo">Мои видеозаписи</a>
+    <a class="item" href="/auth/logout">Выйти</a>
+</div>
+
+<div class="pusher">
+    <div class="ui inverted vertical masthead center aligned segment">
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+                <a class="toc item">
+                    <i class="sidebar icon"></i>
+                </a>
+                <a class="active item" href="/posts/">Главная</a>
+                <a class="item" href="/posts/audio">Музыка</a>
+                <a class="item" href="/posts/images">Картинки</a>
+                <a class="item" href="/posts/video">Видеозаписи</a>
+                <div class="right item">
+                    <button class="ui inverted red basic button" id="exit-button">Выйти</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui text container">
+            <h1 class="ui inverted header" style="font-family: 'Open Sans Condensed', sans-serif;">
+                Музыка
+            </h1>
+            <h2 style="font-family: 'Open Sans Condensed', sans-serif;">Поделись моментом.</h2>
+
+            <div class="ui huge primary button" id="download-btn">Загрузить<i class="right arrow icon"></i></div>
+        </div>
+
+    </div>
+
+    <h3 class="ui center aligned header">Последние добавленные аудиозаписи</h3>
+    <div class="ui text container">
+        <% posts.forEach(function(post, index) { %>
+        <% if (post.type == 'audio') { %>
+        <table class="ui celled table">
+            <thead>
+            <th>
+                <div class="audio" style="height: 33px">
+                    <div  class="ui labeled button" tabindex="0">
+                        <form>
+                            <button class="ui labeled button"  formaction="/posts/like/<%= post.id %>">
+                                <div  class="ui button">
+                                    <i class="heart icon"></i>
+                                    Like
+                                </div>
+                                <a id="count-likes" class="ui basic label">
+                                    <%= post.likes %>
+                                </a>
+                            </button>
+                        </form>
+                    </div>
+                    <audio  controls style="margin-left: 50px;">
+                        <source src="<%= post.image %>"/>
+                    </audio>
+                </div>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <a href="/posts/post/<%= post.id %>" class="header" id="test-header"><%= post.title %></a>
+                            <div class="sub header"><%= post.description %>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="extra">
+                            <img src="<%= post.user.dataValues.image%>" class="ui circular avatar image"> <a href="/users/user/<%=post.user.dataValues.id%>"><%=post.user.dataValues.email%> </a>
+                        </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <% } %>
+        <% }) %>
+    </div>
+    <!--<div class="ui container">
+        <% posts.forEach(function(post, index) { %>
+        <% if (post.type == 'audio') { %>
+        <div class="ui segments">
+            <div class="ui segment">
+                <div class="audio">
+                    <audio controls>
+                        <source src="<%= post.image %>"/>
+                    </audio>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% }) %>
+    </div>-->
+
+
+
+    <!----->
+
+
+</div>
+
+<div class="ui modal" id="new-post-block">
+    <i class="close icon"></i>
+    <div>
+        <form action="/posts/create" method="post" enctype="multipart/form-data" class="ui form">
+            <div class="field" id="field-new-post-descr">
+                <label style="margin-top: 20px;">Заголовок</label>
+                <input name="title" type="text" placeholder="Заголовок" />
+            </div>
+            <div class="field" id="field-new-post-descr">
+                <label>Описание</label>
+                <textarea rows="4" name="description" placeholder="Описание"></textarea>
+            </div>
+            <div class="field" id="field-new-post-descr">
+                <label>Файл</label>
+                <input name="image"  type="file" accept="audio/*, image/*, video/*" />
+            </div>
+            <button id="new-post-button" class="ui primary button" type="submit" style=" font-size: 23px;">Поделиться</button>
+        </form>
+        <div class="ui error message"></div>
+    </div>
+
+</div>
+<!--форма выхода-->
+<div class="ui modal" id="success-block">
+    <i class="close icon"></i>
+    <div class="header">
+        Выход
+    </div>
+    <div class="image content">
+        <div class="description">
+            Вы действительно хотите выйти?
+        </div>
+    </div>
+    <div class="actions">
+        <form id="exit-button">
+            <div class="ui cancel button">Отмена</div>
+            <button class="positive ui button" formaction="/auth/logout" >Выйти</button>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    $('.ui.small.image .image').dimmer({
+        on: 'hover'
+    });
+</script>
+</html>

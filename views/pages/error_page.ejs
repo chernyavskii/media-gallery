@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+    <% include ../partials/scripts %>
+
+    <link href="/public/css/style.css" rel="stylesheet">
+    <link href="/public/css/login.css" rel="stylesheet">
+
+    <title>Ошибка входа</title>
+</head>
+<body>
+<h2 style="font-family: 'Open Sans Condensed', sans-serif;">Ошибка входа.</h2>
+
+<div class="ui message">
+   <a href="/auth/login?ref_path=<%=ref_path%>">Войти</a><br> новый пользователь? <a href="/auth/login?ref_path=<%=ref_path%>">Зарегистрироваться</a>
+</div>
+</div>
+</body>
+</html>
