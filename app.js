@@ -21,7 +21,6 @@ const auth = require('./utils/auth')(authService, config, errors);
 const cache = require('./utils/cache')(cacheService);
 const app = express();
 app.use("/public",express.static(__dirname + "/public"));
-//app.use(express.static('public'));
 app.use(cookieParser(config.cookie.key));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -35,6 +34,9 @@ app.use('/', auth);
 app.use('/', cache);
 app.use('/', apiController);
 
+app.get('/',function (req, res, next) {
+    res.redirect('/posts/')
+})
 app.use('/',function(req, res, next) {
     res.sendData = function(obj) {
         var contentType = req.headers['content-type'];
@@ -51,6 +53,7 @@ app.use('/',function(req, res, next) {
     };
     next();
 });
+
 
 const port = process.env.PORT || 3000;
 

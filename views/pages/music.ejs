@@ -119,26 +119,7 @@
         <% } %>
         <% }) %>
     </div>
-    <!--<div class="ui container">
-        <% posts.forEach(function(post, index) { %>
-        <% if (post.type == 'audio') { %>
-        <div class="ui segments">
-            <div class="ui segment">
-                <div class="audio">
-                    <audio controls>
-                        <source src="<%= post.image %>"/>
-                    </audio>
-                </div>
-            </div>
-        </div>
-        <% } %>
-        <% }) %>
-    </div>-->
-
-
-
-    <!----->
-
+    <hr>
 
 </div>
 
@@ -180,6 +161,38 @@
             <div class="ui cancel button">Отмена</div>
             <button class="positive ui button" formaction="/auth/logout" >Выйти</button>
         </form>
+    </div>
+</div>
+
+<div class="ui inverted vertical footer segment">
+    <div class="ui container">
+        <div class="ui stackable inverted divided equal height stackable grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Меню</h4>
+                <div class="ui inverted link list">
+                    <a class="item" class="item" href="/users/profile">Мой профиль</a>
+                    <a class="item" class="item" href="/posts/useraudio">Мои аудиозаписи</a>
+                    <a class="item" class="item" href="/posts/userimages">Мои картинки</a>
+                    <a class="item" class="item" href="/posts/uservideo">Мои видеозаписи</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Сервисы</h4>
+                <div class="ui inverted link list">
+                    <a class="item" class="item" href="/posts/audio">Музыка</a>
+                    <a class="item" class="item" href="/posts/images">Картинки</a>
+                    <a class="item" class="item" href="/posts/video">Видеозаписи</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <div class="ui inverted link list">
+                    <h4 class="ui inverted header">Ссылки</h4>
+                    <img src="/public/swagg.png"><a id="swagger-link" class="item" href="/public/swagger/public.html">Public Swagger documentation</a>
+                    <img id="git-img" class="item" src="/public/GitHub-Mark-32px.png"><a id="git-link" class="item" href="https://github.com/chernyavskii/media-gallery">GitHub Repository</a>
+                </div>
+                <p style="margin-top:100px">2017. Created by Chernyavskiy Michael. All rights reserved</p>
+            </div>
+        </div>
     </div>
 </div>
 </body>

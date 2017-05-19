@@ -28,7 +28,6 @@
     font-size: 1.7em;
     font-weight: normal;
 }
-<!--
 #success-block{
     max-width: 450px;
     height: 180px;
@@ -82,4 +81,16 @@
 #video-all{
     width: 300px;
     margin-right: 20px;
+}
+#swagger-link{
+    margin-top:-30px;
+    margin-left: 35px;
+}
+#git-img{
+    margin-top: 4px;
+}
+#git-link{
+    margin-top: -30px;
+    margin-left: 35px;
+    margin-bottom: -50px;
 }

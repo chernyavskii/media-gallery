@@ -1,0 +1,1659 @@
+<!doctype html>
+<html>
+  <head>
+    <title>media-api</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>media-api</h1>
+    <div class="app-desc">Media-api documentation</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#OperationWithPosts">OperationWithPosts</a></h4>
+  <ul>
+  <li><a href="#postsCorrectIdGet"><code><span class="http-method">get</span> /posts/correct/{id}</code></a></li>
+  <li><a href="#postsCreatePost"><code><span class="http-method">post</span> /posts/create</code></a></li>
+  <li><a href="#postsDestroyIdGet"><code><span class="http-method">get</span> /posts/destroy/{id}</code></a></li>
+  <li><a href="#postsLikeIdGet"><code><span class="http-method">get</span> /posts/like/{id}</code></a></li>
+  <li><a href="#postsPostIdGet"><code><span class="http-method">get</span> /posts/post/{id}</code></a></li>
+  <li><a href="#postsSearchPost"><code><span class="http-method">post</span> /posts/search</code></a></li>
+  </ul>
+  <h4><a href="#OperationWithUsers">OperationWithUsers</a></h4>
+  <ul>
+  <li><a href="#usersProfileGet"><code><span class="http-method">get</span> /users/profile</code></a></li>
+  <li><a href="#usersUserIdGet"><code><span class="http-method">get</span> /users/user/{id}</code></a></li>
+  </ul>
+  <h4><a href="#Posts">Posts</a></h4>
+  <ul>
+  <li><a href="#postsAudioGet"><code><span class="http-method">get</span> /posts/audio</code></a></li>
+  <li><a href="#postsGet"><code><span class="http-method">get</span> /posts</code></a></li>
+  <li><a href="#postsImagesGet"><code><span class="http-method">get</span> /posts/images</code></a></li>
+  <li><a href="#postsVideoGet"><code><span class="http-method">get</span> /posts/video</code></a></li>
+  </ul>
+  <h4><a href="#UserAuthentication">UserAuthentication</a></h4>
+  <ul>
+  <li><a href="#usersLoginPost"><code><span class="http-method">post</span> /users/login</code></a></li>
+  <li><a href="#usersRegisterPost"><code><span class="http-method">post</span> /users/register</code></a></li>
+  </ul>
+  <h4><a href="#UserPosts">UserPosts</a></h4>
+  <ul>
+  <li><a href="#postsUseraudioGet"><code><span class="http-method">get</span> /posts/useraudio</code></a></li>
+  <li><a href="#postsUserimagesGet"><code><span class="http-method">get</span> /posts/userimages</code></a></li>
+  <li><a href="#postsUservideoGet"><code><span class="http-method">get</span> /posts/uservideo</code></a></li>
+  </ul>
+
+  <h1><a name="OperationWithPosts">OperationWithPosts</a></h1>
+  <div class="method"><a name="postsCorrectIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/correct/{id}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsCorrectIdGet</span>)</div>
+    <div class="method-notes">Обновить публикацию по id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id публикации </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_5">inline_response_200_5</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "Success" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_5">inline_response_200_5</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsCreatePost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /posts/create</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsCreatePost</span>)</div>
+    <div class="method-notes">Добавить новую публикацию</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">title <a href="#Title">Title</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Атрибуты публикации </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_2">inline_response_200_2</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "image" : "aeiou",
+  "description" : "aeiou",
+  "title" : "aeiou",
+  "image_id" : "aeiou",
+  "type" : "aeiou",
+  "userId" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_2">inline_response_200_2</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsDestroyIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/destroy/{id}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsDestroyIdGet</span>)</div>
+    <div class="method-notes">Удаление публикации</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id публикации </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_5">inline_response_200_5</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "Success" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_5">inline_response_200_5</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsLikeIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/like/{id}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsLikeIdGet</span>)</div>
+    <div class="method-notes">Оценить публикацию по id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id публикации </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_6">inline_response_200_6</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "createdAt" : "aeiou",
+  "id" : 123,
+  "postId" : 123,
+  "userId" : 123,
+  "updatedAt" : "aeiou"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_6">inline_response_200_6</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsPostIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/post/{id}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsPostIdGet</span>)</div>
+    <div class="method-notes">Получить публикацию по id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id публикации </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_3">inline_response_200_3</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "image" : "aeiou",
+  "image_id_user" : "aeiou",
+  "description" : "aeiou",
+  "title" : "aeiou",
+  "type" : "aeiou",
+  "userId" : 123,
+  "image_user" : "aeiou",
+  "createdAt" : "aeiou",
+  "id" : 123,
+  "image_id" : "aeiou",
+  "email" : "aeiou",
+  "likes" : "aeiou",
+  "updatedAt" : "aeiou"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_3">inline_response_200_3</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsSearchPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /posts/search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsSearchPost</span>)</div>
+    <div class="method-notes">Поиск публикаций по ключевому слову</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Body_2">Body_2</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Атрибуты пользователя </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "user" : {
+      "image" : "aeiou",
+      "createdAt" : "aeiou",
+      "password" : "aeiou",
+      "firstname" : "aeiou",
+      "deletedAt" : "aeiou",
+      "id" : 123,
+      "image_id" : "aeiou",
+      "email" : "aeiou",
+      "lastname" : "aeiou",
+      "status" : 123,
+      "updatedAt" : "aeiou"
+    },
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="OperationWithUsers">OperationWithUsers</a></h1>
+  <div class="method"><a name="usersProfileGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/profile</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">usersProfileGet</span>)</div>
+    <div class="method-notes">Профиль текущего авторизованного пользователя</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_8">inline_response_200_8</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "image" : "aeiou",
+  "createdAt" : "aeiou",
+  "password" : "aeiou",
+  "firstname" : "aeiou",
+  "id" : 123,
+  "image_id" : "aeiou",
+  "count_posts" : 123,
+  "email" : "aeiou",
+  "lastname" : "aeiou"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_8">inline_response_200_8</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="usersUserIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/user/{id}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">usersUserIdGet</span>)</div>
+    <div class="method-notes">Получить пользователя по id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id пользователя </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "image" : "aeiou",
+  "createdAt" : "aeiou",
+  "password" : "aeiou",
+  "firstname" : "aeiou",
+  "deletedAt" : "aeiou",
+  "id" : 123,
+  "image_id" : "aeiou",
+  "email" : "aeiou",
+  "status" : 123,
+  "lastname" : "aeiou",
+  "updatedAt" : "aeiou"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200">inline_response_200</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Posts">Posts</a></h1>
+  <div class="method"><a name="postsAudioGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/audio</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsAudioGet</span>)</div>
+    <div class="method-notes">Список всех аудиозаписей</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "user" : {
+      "image" : "aeiou",
+      "createdAt" : "aeiou",
+      "password" : "aeiou",
+      "firstname" : "aeiou",
+      "deletedAt" : "aeiou",
+      "id" : 123,
+      "image_id" : "aeiou",
+      "email" : "aeiou",
+      "lastname" : "aeiou",
+      "status" : 123,
+      "updatedAt" : "aeiou"
+    },
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsGet</span>)</div>
+    <div class="method-notes">Список всех публикаций</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "user" : {
+      "image" : "aeiou",
+      "createdAt" : "aeiou",
+      "password" : "aeiou",
+      "firstname" : "aeiou",
+      "deletedAt" : "aeiou",
+      "id" : 123,
+      "image_id" : "aeiou",
+      "email" : "aeiou",
+      "lastname" : "aeiou",
+      "status" : 123,
+      "updatedAt" : "aeiou"
+    },
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsImagesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/images</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsImagesGet</span>)</div>
+    <div class="method-notes">Список всех изображений</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "user" : {
+      "image" : "aeiou",
+      "createdAt" : "aeiou",
+      "password" : "aeiou",
+      "firstname" : "aeiou",
+      "deletedAt" : "aeiou",
+      "id" : 123,
+      "image_id" : "aeiou",
+      "email" : "aeiou",
+      "lastname" : "aeiou",
+      "status" : 123,
+      "updatedAt" : "aeiou"
+    },
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsVideoGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/video</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsVideoGet</span>)</div>
+    <div class="method-notes">Список всех видеозаписей</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "user" : {
+      "image" : "aeiou",
+      "createdAt" : "aeiou",
+      "password" : "aeiou",
+      "firstname" : "aeiou",
+      "deletedAt" : "aeiou",
+      "id" : 123,
+      "image_id" : "aeiou",
+      "email" : "aeiou",
+      "lastname" : "aeiou",
+      "status" : 123,
+      "updatedAt" : "aeiou"
+    },
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="UserAuthentication">UserAuthentication</a></h1>
+  <div class="method"><a name="usersLoginPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/login</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">usersLoginPost</span>)</div>
+    <div class="method-notes">Авторизация</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Body_1">Body_1</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Атрибуты пользователя </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1">inline_response_200_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "roleId" : 123,
+  "id" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_1">inline_response_200_1</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="usersRegisterPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/register</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">usersRegisterPost</span>)</div>
+    <div class="method-notes">Добавление нового пользователя</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Body">Body</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Атрибуты пользователя </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "image" : "aeiou",
+  "createdAt" : "aeiou",
+  "password" : "aeiou",
+  "firstname" : "aeiou",
+  "deletedAt" : "aeiou",
+  "id" : 123,
+  "image_id" : "aeiou",
+  "email" : "aeiou",
+  "status" : 123,
+  "lastname" : "aeiou",
+  "updatedAt" : "aeiou"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200">inline_response_200</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="UserPosts">UserPosts</a></h1>
+  <div class="method"><a name="postsUseraudioGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/useraudio</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsUseraudioGet</span>)</div>
+    <div class="method-notes">Список всех аудиозаписей пользователя</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_7">inline_response_200_7</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_7">inline_response_200_7</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsUserimagesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/userimages</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsUserimagesGet</span>)</div>
+    <div class="method-notes">Список всех изображений пользователя</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_7">inline_response_200_7</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_7">inline_response_200_7</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsUservideoGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/uservideo</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">postsUservideoGet</span>)</div>
+    <div class="method-notes">Список всех видеозаписей пользователя</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_7">inline_response_200_7</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "posts" : [ {
+    "image" : "aeiou",
+    "createdAt" : "aeiou",
+    "deletedAt" : "aeiou",
+    "description" : "aeiou",
+    "id" : 123,
+    "title" : "aeiou",
+    "type" : "aeiou",
+    "image_id" : "aeiou",
+    "userId" : 123,
+    "likes" : "aeiou",
+    "updatedAt" : "aeiou"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>text/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_7">inline_response_200_7</a>
+    <h4 class="field-label">0</h4>
+    Error
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <div class="up"><a href="#__Models">Up</a></div>
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#body"><code>body</code></a></li>
+    <li><a href="#body_1"><code>body_1</code></a></li>
+    <li><a href="#body_2"><code>body_2</code></a></li>
+    <li><a href="#Error"><code>Error</code></a></li>
+    <li><a href="#GeneralSuccessResponse"><code>GeneralSuccessResponse</code></a></li>
+    <li><a href="#GetCreatePostResponse"><code>GetCreatePostResponse</code></a></li>
+    <li><a href="#GetLoginResponse"><code>GetLoginResponse</code></a></li>
+    <li><a href="#GetPostByIdResponse"><code>GetPostByIdResponse</code></a></li>
+    <li><a href="#GetPostsListResponse"><code>GetPostsListResponse</code></a></li>
+    <li><a href="#GetPostsUserListResponse"><code>GetPostsUserListResponse</code></a></li>
+    <li><a href="#GetProfileResponse"><code>GetProfileResponse</code></a></li>
+    <li><a href="#GetRegisterResponse"><code>GetRegisterResponse</code></a></li>
+    <li><a href="#GetUsersListResponse"><code>GetUsersListResponse</code></a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code></a></li>
+    <li><a href="#inline_response_200_1"><code>inline_response_200_1</code></a></li>
+    <li><a href="#inline_response_200_2"><code>inline_response_200_2</code></a></li>
+    <li><a href="#inline_response_200_3"><code>inline_response_200_3</code></a></li>
+    <li><a href="#inline_response_200_4"><code>inline_response_200_4</code></a></li>
+    <li><a href="#inline_response_200_4_posts"><code>inline_response_200_4_posts</code></a></li>
+    <li><a href="#inline_response_200_4_user"><code>inline_response_200_4_user</code></a></li>
+    <li><a href="#inline_response_200_5"><code>inline_response_200_5</code></a></li>
+    <li><a href="#inline_response_200_6"><code>inline_response_200_6</code></a></li>
+    <li><a href="#inline_response_200_7"><code>inline_response_200_7</code></a></li>
+    <li><a href="#inline_response_200_7_posts"><code>inline_response_200_7_posts</code></a></li>
+    <li><a href="#inline_response_200_8"><code>inline_response_200_8</code></a></li>
+    <li><a href="#inline_response_default"><code>inline_response_default</code></a></li>
+    <li><a href="#Like"><code>Like</code></a></li>
+    <li><a href="#Login"><code>Login</code></a></li>
+    <li><a href="#Post"><code>Post</code></a></li>
+    <li><a href="#title"><code>title</code></a></li>
+    <li><a href="#User"><code>User</code></a></li>
+    <li><a href="#Word"><code>Word</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3 class="field-label"><a name="body">body - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> статус блокировки </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="body_1">body_1 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="body_2">body_2 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">word (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ключевое слово </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Error">Error - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: int32</div>
+<div class="param">code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GeneralSuccessResponse">GeneralSuccessResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">Success </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetCreatePostResponse">GetCreatePostResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">userId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип публикации </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetLoginResponse">GetLoginResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">roleId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id роли </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetPostByIdResponse">GetPostByIdResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип публикации </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">likes </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> рейтинг публикации </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+<div class="param">updatedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">userId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">image_id_user </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id аватара пользователя </div>
+<div class="param">image_user </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id аватара пользователя </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetPostsListResponse">GetPostsListResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">posts </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_posts">array[inline_response_200_4_posts]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetPostsUserListResponse">GetPostsUserListResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">posts </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_7_posts">array[inline_response_200_7_posts]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetProfileResponse">GetProfileResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">count_posts </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> время обновления </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetRegisterResponse">GetRegisterResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> статус блокировки </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">updatedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">deletedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время удаления </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="GetUsersListResponse">GetUsersListResponse - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">users </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_user">array[inline_response_200_4_user]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200">inline_response_200 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> статус блокировки </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">updatedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">deletedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время удаления </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_1">inline_response_200_1 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">roleId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id роли </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_2">inline_response_200_2 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">userId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип публикации </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_3">inline_response_200_3 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип публикации </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">likes </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> рейтинг публикации </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+<div class="param">updatedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">userId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">image_id_user </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id аватара пользователя </div>
+<div class="param">image_user </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id аватара пользователя </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_4">inline_response_200_4 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">posts </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_posts">array[inline_response_200_4_posts]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_4_posts">inline_response_200_4_posts - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id публикации </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип публикации </div>
+<div class="param">image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">likes (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> рейтинг публикации </div>
+<div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+<div class="param">updatedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">deletedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время удаления </div>
+<div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_user">inline_response_200_4_user</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_4_user">inline_response_200_4_user - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> статус блокировки </div>
+<div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+<div class="param">updatedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">deletedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время удаления </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_5">inline_response_200_5 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">Success </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_6">inline_response_200_6 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id записи </div>
+<div class="param">userId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">postId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id публикации </div>
+<div class="param">updatedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_7">inline_response_200_7 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">posts </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_7_posts">array[inline_response_200_7_posts]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_7_posts">inline_response_200_7_posts - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id публикации </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип публикации </div>
+<div class="param">image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">likes (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> рейтинг публикации </div>
+<div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+<div class="param">updatedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">deletedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время удаления </div>
+<div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_200_8">inline_response_200_8 - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+<div class="param">count_posts </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> время обновления </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="inline_response_default">inline_response_default - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: int32</div>
+<div class="param">code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Like">Like - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id записи </div>
+<div class="param">userId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id пользователя </div>
+<div class="param">postId </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id публикации </div>
+<div class="param">updatedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время обновления </div>
+<div class="param">createdAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> время создания </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Login">Login - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Post">Post - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> медиа-файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id медиа-файла </div>
+<div class="param">likes </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> рейтинг публикации </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="title">title - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">title </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> заголовок </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> описание </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> тип </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> медиа-файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id медиа-файла </div>
+<div class="param">likes </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> рейтинг публикации </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="User">User - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> статус блокировки </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email адрес </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> пароль </div>
+<div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> имя </div>
+<div class="param">lastname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> фамилия </div>
+<div class="param">image </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> файл </div>
+<div class="param">image_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> id файла </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3 class="field-label"><a name="Word">Word - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">word (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ключевое слово </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

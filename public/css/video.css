@@ -50,3 +50,15 @@
 #new-post-block{
     background: url("../../public/olen_minimalizm_vektor_fon_priroda_93845_1440x900.jpg");
 }
+#swagger-link{
+    margin-top:-30px;
+    margin-left: 35px;
+}
+#git-img{
+    margin-top: 4px;
+}
+#git-link{
+    margin-top: -30px;
+    margin-left: 35px;
+    margin-bottom: -50px;
+}

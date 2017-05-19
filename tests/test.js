@@ -18,10 +18,6 @@ const postService = require('../services/posts')(dbcontext.post,dbcontext.user,d
 const authService = require('../services/auth')(dbcontext.user,dbcontext.role,dbcontext.userRole, errors);
 const cacheService = require('../services/cache');
 
-/*
-let authService = require('../services/user')(userRepository);
-*/
-
 var sandbox;
 beforeEach(function ()
 {
@@ -152,20 +148,6 @@ describe('- User Service testing', ()=> {
                 err.status.should.be.equal(errors.incorrectData.status);
             })
         });
-       /* it('Return object Data', () => {
-            sandbox.stub(userRepository, 'destroy').returns(Promise.resolve(resolve));
-            let promise = userService.deleteProfile(1,2);
-            return promise.then((result) => {
-                result.should.be.an.Object();
-            })
-        });
-        it('Return Data on JSON format', () => {
-            sandbox.stub(userRepository, 'destroy').returns(Promise.resolve(resolve));
-            let promise = userService.deleteProfile(1,2);
-            return promise.then((result) => {
-                result.should.be.an.json;
-            })
-        });*/
     });
     describe('Get all Users: ', () => {
         it('Return array of users', () => {

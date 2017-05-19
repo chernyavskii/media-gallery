@@ -107,7 +107,6 @@ module.exports = (postService, config) => {
      });
 
     router.post('/search', (req, res) => {
-        console.log(req.body.word);
         postService.searchPost(req.body.word)
             .then((posts) => res.render('pages/search',{posts:posts}))
             .catch((err) => res.error(err));

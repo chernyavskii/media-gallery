@@ -25,7 +25,6 @@ module.exports = (authService, config) => {
                                 res.redirect('/posts/');
                             }
                             else {
-                                console.log("QWERT");
                                 res.redirect(url);
                             }
                         }
