@@ -19,7 +19,6 @@ const logger = require('./utils/logger');
 const auth = require('./utils/auth')(authService, config, errors);
 
 const cache = require('./utils/cache')(cacheService);
-
 const app = express();
 app.use("/public",express.static(__dirname + "/public"));
 //app.use(express.static('public'));
