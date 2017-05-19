@@ -42,12 +42,23 @@ module.exports = {
         message: 'Password length must be at least six characters',
         code: 'password_length',
         status: 407
-    }
-  /*  deleteAdmin: {
-        message: 'Удаление пользователя невозможно',
-        code: 'delete_is impossible',
-        status: 402
     },
+    incorrectData:{
+        message: 'Entered incorrect data',
+        code: 'incorrect_data',
+        status: 408
+    },
+    blockAdmin: {
+        message: 'Block is impossible',
+        code: 'block_is impossible',
+        status: 409
+    },
+    deleteAdmin: {
+        message: 'Delete is impossible',
+        code: 'delete_is impossible',
+        status: 410
+    }
+    /**
     blockAdmin: {
         message: 'Блокировка пользователя невозможна',
         code: 'block_is impossible',

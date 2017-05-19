@@ -37,6 +37,16 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
         if(equal_type == type.value1)
         {
             return new Promise((resolve, reject) => {
+                if(userId < 0) {
+                    reject(errors.incorrectData);
+                    return;
+                }
+                if (userId == null || userId == "" || post == null ||
+                    post == "" || media == null || media == "" ||
+                    media_type == null || media_type == "") {
+                    reject(errors.emptyData);
+                    return;
+                }
                 cloudinary.uploader.upload(media, function (result) {
                         let new_post = {
                             userId: userId,
@@ -58,6 +68,16 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
         if(equal_type == type.value2)
         {
             return new Promise((resolve, reject) => {
+                if(userId < 0) {
+                    reject(errors.incorrectData);
+                    return;
+                }
+                if (userId == null || userId == "" || post == null ||
+                    post == "" || media == null || media == "" ||
+                    media_type == null || media_type == "") {
+                    reject(errors.emptyData);
+                    return;
+                }
                 cloudinary.uploader.upload(media, function (result) {
                         let new_post = {
                             userId: userId,
@@ -79,6 +99,16 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
         if(equal_type == type.value3)
         {
             return new Promise((resolve, reject) => {
+                if(userId < 0) {
+                    reject(errors.incorrectData);
+                    return;
+                }
+                if (userId == null || userId == "" || post == null ||
+                    post == "" || media == null || media == "" ||
+                    media_type == null || media_type == "") {
+                    reject(errors.emptyData);
+                    return;
+                }
                 cloudinary.uploader.upload(media, function (result) {
                         let new_post = {
                             userId: userId,
@@ -102,18 +132,18 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function getById(id) {
         return new Promise((resolve, reject) => {
-            if (id == null || id == "") {
-                reject(errors.emptyData);
+            if(id < 0) {
+                reject(errors.incorrectData);
                 return;
             }
-            if (id == undefined) {
-                reject(errors.undefinedData);
+            if (id == null || id == "") {
+                reject(errors.emptyData);
                 return;
             }
             postRepository.findById(id, {include: [{model: userRepository, required: true}]})
                 .then((post) => {
                     if (post == null) {
-                        reject(errors.undefinedData)
+                        reject(errors.emptyData)
                         return;
                     }
                     else {
@@ -133,6 +163,7 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
                             image_user: post.user.dataValues.image
                         };
                         resolve(postById);
+
                     }
                 })
                 .catch(reject);
@@ -149,14 +180,13 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function deleteById(id) {
         return new Promise((resolve, reject) => {
+            if(id < 0) {
+                reject(errors.incorrectData);
+                return;
+            }
             if(id == null || id == "")
             {
                 reject(errors.emptyData);
-                return;
-            }
-            if(id == undefined)
-            {
-                reject(errors.undefinedData);
                 return;
             }
             postRepository.destroy({where : {id : id}})
@@ -191,14 +221,13 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function getAllUserImages(userId) {
         return new Promise((resolve, reject) => {
+            if(userId < 0) {
+                reject(errors.incorrectData);
+                return;
+            }
             if(userId == null || userId == "")
             {
                 reject(errors.emptyData);
-                return;
-            }
-            if(userId == undefined)
-            {
-                reject(errors.undefinedData);
                 return;
             }
             postRepository.findAll({where:{type:'image',userId:userId}})
@@ -209,14 +238,13 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function getAllUserAudio(userId) {
         return new Promise((resolve, reject) => {
+            if(userId < 0) {
+                reject(errors.incorrectData);
+                return;
+            }
             if(userId == null || userId == "")
             {
                 reject(errors.emptyData);
-                return;
-            }
-            if(userId == undefined)
-            {
-                reject(errors.undefinedData);
                 return;
             }
             postRepository.findAll({where:{type:'audio',userId:userId}})
@@ -227,14 +255,12 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function getAllUserVideo(userId) {
         return new Promise((resolve, reject) => {
-            if(userId == null || userId == "")
-            {
-                reject(errors.emptyData);
+            if(userId < 0) {
+                reject(errors.incorrectData);
                 return;
             }
-            if(userId == undefined)
-            {
-                reject(errors.undefinedData);
+            if(userId == null || userId == "") {
+                reject(errors.emptyData);
                 return;
             }
             postRepository.findAll({where:{type:'video',userId:userId}})
@@ -245,14 +271,14 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function updatePost(id,data) {
         return new Promise((resolve, reject) => {
+            if(id < 0)
+            {
+                reject(errors.incorrectData);
+                return;
+            }
             if(id == null || id == "" || data == null || data == "")
             {
                 reject(errors.emptyData);
-                return;
-            }
-            if(id == undefined || data == undefined)
-            {
-                reject(errors.undefinedData);
                 return;
             }
             let new_data = {
@@ -267,14 +293,14 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
 
     function likePost(userId,postId) {
         return new Promise((resolve, reject) => {
+            if(userId < 0 || postId < 0)
+            {
+                reject(errors.incorrectData);
+                return;
+            }
             if(userId == null || userId == "" || postId == null || postId == "")
             {
                 reject(errors.emptyData);
-                return;
-            }
-            if(userId == undefined || postId == undefined)
-            {
-                reject(errors.undefinedData);
                 return;
             }
             likeRepository.findOne({ where: { userId: userId, postId: postId }, attributes: ['id'] })
@@ -323,10 +349,6 @@ module.exports = (postRepository,userRepository,likeRepository, errors) => {
             return new Promise((resolve,reject) => {
                 if (word == null || word == "" ) {
                     reject(errors.emptyData);
-                    return;
-                };
-                if (word == undefined ) {
-                    reject(errors.undefinedData);
                     return;
                 };
                 postRepository.findAll({

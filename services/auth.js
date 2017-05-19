@@ -50,16 +50,11 @@ module.exports = (userRepository, roleRepository, userRoleRepository,errors) => 
 
     function register(data, media) {
         return new Promise((resolve, reject) => {
-            console.log(media);
             if (data == null || data == "" || data.email == null ||
                 data.email == "" || data.password == null || data.password == "" ||
                 data.firstname == null || data.firstname == "" || data.lastname == null
                 || data.lastname == "" || media ==null || media == "") {
                 reject(errors.emptyData);
-                return;
-            }
-            if (data == undefined || data.email == undefined || data.password == undefined) {
-                reject(errors.undefinedData);
                 return;
             }
             if(data.password.length < 6)
@@ -99,10 +94,6 @@ module.exports = (userRepository, roleRepository, userRoleRepository,errors) => 
         return new Promise((resolve, reject) => {
             if (data == null || data == "" || data.email == null || data.email == "" || data.password == null || data.password == "") {
                 reject(errors.emptyData);
-                return;
-            }
-            if (data == undefined || data.email == undefined || data.password == undefined) {
-                reject(errors.undefinedData);
                 return;
             }
             userRepository.findOne({ where: { email: data.email }, attributes: ['id', 'password','status'] })

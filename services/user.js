@@ -10,6 +10,14 @@ module.exports = (userRepository, userRoleRepository, postRepository, errors) =>
 
     function getProfile(userId) {
         return new Promise((resolve, reject) => {
+            if(userId < 0 ) {
+                reject(errors.incorrectData);
+                return;
+            }
+            if (userId == null || userId == "") {
+                reject(errors.emptyData);
+                return;
+            }
             userRepository.findById(userId,{include: [{ model: postRepository, required: true}]})
                 .then((user) =>
                 {
@@ -62,6 +70,14 @@ module.exports = (userRepository, userRoleRepository, postRepository, errors) =>
 
     function deleteProfile(idSession, id) {
         return new Promise((resolve, reject) => {
+            if(id < 0 || idSession < 0) {
+                reject(errors.incorrectData);
+                return;
+            }
+            if (id == null || id == "" || idSession == null || idSession == "") {
+                reject(errors.emptyData);
+                return;
+            }
             if (idSession == id) {
                 reject(errors.deleteAdmin);
                 return;
@@ -76,6 +92,14 @@ module.exports = (userRepository, userRoleRepository, postRepository, errors) =>
 
     function blockProfile(idSession, id) {
         return new Promise((resolve, reject) => {
+            if(id < 0 || idSession < 0) {
+                reject(errors.incorrectData);
+                return;
+            }
+            if (id == null || id == "" || idSession == null || idSession == "") {
+                reject(errors.emptyData);
+                return;
+            }
             if (idSession == id) {
                 reject(errors.blockAdmin);
                 return;
