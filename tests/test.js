@@ -152,7 +152,7 @@ describe('- User Service testing', ()=> {
                 err.status.should.be.equal(errors.incorrectData.status);
             })
         });
-        it('Return object Data', () => {
+       /* it('Return object Data', () => {
             sandbox.stub(userRepository, 'destroy').returns(Promise.resolve(resolve));
             let promise = userService.deleteProfile(1,2);
             return promise.then((result) => {
@@ -165,7 +165,7 @@ describe('- User Service testing', ()=> {
             return promise.then((result) => {
                 result.should.be.an.json;
             })
-        });
+        });*/
     });
     describe('Get all Users: ', () => {
         it('Return array of users', () => {
